@@ -64,7 +64,13 @@ async function fetchStreamers() {
       headers,
       params: { login: STREAMERS },
     });
+    const usersData = usersRes.data.data;
     const userIds = usersRes.data.data.map(user => user.id);
+    const profileMap = {};
+    usersData.forEach(user => {
+      profileMap[user.id] = user.profile_image_url;
+    });
+
 
     if (userIds.length === 0) {
       console.log("No se encontraron IDs de streamers.");
@@ -93,6 +99,7 @@ async function fetchStreamers() {
       game: stream.game_name,
       started_at: stream.started_at,
       snapshot_at: new Date().toLocaleString("sv-SE", { timeZone: "Europe/Madrid" }),
+      profile_image_url: profileMap[stream.user_id],
     }));
 
     const { error } = await supabase.from("stats").insert(streamData);
