@@ -1,9 +1,10 @@
 {
   "name": "koi-stats-definitivo",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
     "start": "node app.js",
-    "dev": "node app.js",    
+    "dev": "node app.js",
     "build": "echo 'No build step for backend'",
     "preview": "echo 'No preview step for backend'"
   },
