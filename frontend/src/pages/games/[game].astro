@@ -3,12 +3,16 @@ import Layout from '../../layouts/Layout.astro';
 import { GamesAPI } from '../../lib/api';
 import StreamerCard from '../../components/StreamerCard.jsx';
 
-// Obtener el nombre del juego de la URL
 const { game } = Astro.params;
-const decodedGame = decodeURIComponent(game);
+const decodedGame = decodeURIComponent(game || '');
 
-// Obtener datos del juego con manejo de errores
-let streamers = [];
+let streamers: Array<{
+  streamer_name: string;
+  viewers_count: number;
+  game: string;
+  title: string;
+  snapshot_at?: string;
+}> = [];
 let error = null;
 
 try {
@@ -16,10 +20,12 @@ try {
   
   if (gameData && gameData.length > 0) {
     // Agrupar por streamer para evitar duplicados
-    const streamerMap = {};
-    gameData.forEach(item => {
-      if (!streamerMap[item.streamer_name] || 
-          new Date(streamerMap[item.streamer_name].snapshot_at) < new Date(item.snapshot_at)) {
+    const streamerMap: Record<string, { streamer_name: string; viewers_count: number; game: string; title: string; snapshot_at?: string }> = {};
+    gameData.forEach((item: { streamer_name: string; viewers_count: number; game: string; title: string; snapshot_at?: string }) => {
+      if (
+        !streamerMap[item.streamer_name] ||
+        new Date(streamerMap[item.streamer_name].snapshot_at || 0) < new Date(item.snapshot_at || 0)
+      ) {
         streamerMap[item.streamer_name] = item;
       }
     });
@@ -36,12 +42,17 @@ try {
   error = `Error al cargar datos para el juego "${decodedGame}"`;
   
   // Datos de fallback
-  streamers = Array(4).fill().map((_, i) => ({
-    streamer_name: `Streamer ${i+1}`,
-    viewers_count: 0,
-    game: decodedGame,
-    title: 'Sin datos disponibles'
-  }));
+  streamers = Array(4)
+    .fill({
+      streamer_name: '',
+      viewers_count: 0,
+      game: decodedGame,
+      title: 'Sin datos disponibles'
+    })
+    .map((item, i) => ({
+      ...item,
+      streamer_name: `Streamer ${i + 1}`
+    }));
 }
 ---
 
@@ -64,10 +75,9 @@ try {
     )}
     
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {streamers.map(streamer => (
+      {streamers.map((streamer) => (
         <StreamerCard streamer={streamer} />
       ))}
     </div>
   </div>
 </Layout>
-

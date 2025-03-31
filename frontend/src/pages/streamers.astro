@@ -4,7 +4,13 @@ import { StreamersAPI } from '../lib/api';
 import StreamerCard from '../components/StreamerCard.jsx';
 
 // Obtener los streamers más populares con manejo de errores mejorado
-let topStreamers = [];
+interface Streamer {
+  id: number;
+  streamer_name: string;
+  [key: string]: any; // Adjust this based on the actual structure of the streamer object
+}
+
+let topStreamers: Streamer[] = [];
 let error = null;
 
 try {
@@ -18,7 +24,7 @@ try {
   }
 } catch (err) {
   console.error("Error al cargar streamers:", err);
-  error = `Error al cargar streamers: ${err.message}`;
+  error = `Error al cargar streamers: ${(err as Error).message}`;
 }
 ---
 

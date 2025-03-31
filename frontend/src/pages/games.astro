@@ -3,7 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import { GamesAPI } from '../lib/api';
 
 // Obtener los juegos más populares con manejo de errores mejorado
-let topGames = [];
+interface Game {
+  game: string;
+  total_viewers: number;
+  streamer_count: number;
+}
+
+let topGames: Game[] = [];
 let error = null;
 
 try {
@@ -17,7 +23,7 @@ try {
   }
 } catch (err) {
   console.error("Error al cargar juegos:", err);
-  error = `Error al cargar juegos: ${err.message}`;
+  error = `Error al cargar juegos: ${(err as Error).message}`;
 }
 ---
 
