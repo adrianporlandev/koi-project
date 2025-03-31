@@ -5,7 +5,7 @@ import { createClient } from "@supabase/supabase-js";
 dotenv.config();
 
 // Configurar Supabase
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
 
 // Configurar credenciales de Twitch
 const CLIENT_ID = process.env.TWITCH_CLIENT_ID;
