@@ -1,7 +1,7 @@
 import { c as createComponent, b as createAstro, r as renderComponent, a as renderTemplate, m as maybeRenderHead } from '../../chunks/astro/server_Rbl2tHtw.mjs';
 import 'kleur/colors';
 import { $ as $$Layout } from '../../chunks/Layout_B6RRkINA.mjs';
-import { G as GamesAPI } from '../../chunks/api_DtQ2kKCQ.mjs';
+import { G as GamesAPI } from '../../chunks/api_CPIoDhh6.mjs';
 import { S as StreamerCard } from '../../chunks/StreamerCard_C5mNpBAQ.mjs';
 export { renderers } from '../../renderers.mjs';
 

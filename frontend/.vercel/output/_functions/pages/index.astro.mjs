@@ -3,7 +3,7 @@ import 'kleur/colors';
 import { $ as $$Layout } from '../chunks/Layout_B6RRkINA.mjs';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
-import { S as StreamersAPI } from '../chunks/api_DtQ2kKCQ.mjs';
+import { S as StreamersAPI } from '../chunks/api_CPIoDhh6.mjs';
 import { T as TimeRangeSelector } from '../chunks/TimeRangeSelector_DkftwEK_.mjs';
 export { renderers } from '../renderers.mjs';
 

@@ -1,7 +1,7 @@
 import { c as createComponent, b as createAstro, r as renderComponent, a as renderTemplate, m as maybeRenderHead } from '../../chunks/astro/server_Rbl2tHtw.mjs';
 import 'kleur/colors';
 import { $ as $$Layout } from '../../chunks/Layout_B6RRkINA.mjs';
-import { S as StreamersAPI } from '../../chunks/api_DtQ2kKCQ.mjs';
+import { S as StreamersAPI } from '../../chunks/api_CPIoDhh6.mjs';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
 import { T as TimeRangeSelector } from '../../chunks/TimeRangeSelector_DkftwEK_.mjs';

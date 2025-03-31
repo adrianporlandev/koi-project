@@ -3,7 +3,7 @@ import 'kleur/colors';
 import { $ as $$Layout } from '../chunks/Layout_B6RRkINA.mjs';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
-import { t as testAPIConnection } from '../chunks/api_DtQ2kKCQ.mjs';
+import { t as testAPIConnection } from '../chunks/api_CPIoDhh6.mjs';
 export { renderers } from '../renderers.mjs';
 
 function APIConnectionTest() {
@@ -11,7 +11,7 @@ function APIConnectionTest() {
   const [loading, setLoading] = useState(false);
   const [apiUrl, setApiUrl] = useState("");
   useEffect(() => {
-    const url = "http://localhost:3000/api";
+    const url = "https://koi-project.onrender.com/api";
     setApiUrl(url);
   }, []);
   const runTest = async () => {

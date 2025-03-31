@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/api";
+const API_URL = "https://koi-project.onrender.com/api";
 async function fetchAPI(endpoint, options = {}) {
   const url = `${API_URL}${endpoint}`;
   console.log(`Intentando conectar a: ${url}`);

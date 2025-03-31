@@ -1,7 +1,7 @@
 import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_Rbl2tHtw.mjs';
 import 'kleur/colors';
 import { $ as $$Layout } from '../chunks/Layout_B6RRkINA.mjs';
-import { G as GamesAPI } from '../chunks/api_DtQ2kKCQ.mjs';
+import { G as GamesAPI } from '../chunks/api_CPIoDhh6.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Games = createComponent(async ($$result, $$props, $$slots) => {
