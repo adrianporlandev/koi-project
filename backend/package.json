@@ -1,12 +1,11 @@
 {
   "name": "koi-stats-definitivo",
-  "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "start": "node app.js",
+    "dev": "node app.js",    
+    "build": "echo 'No build step for backend'",
+    "preview": "echo 'No preview step for backend'"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
