@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import APIConnectionTest from '../components/APIConnectionTest.jsx';
+---
+
+<Layout title="Diagnóstico de Conexión - Twitch Stats">
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">Diagnóstico de Conexión</h1>
+    
+    <p class="text-gray-700 mb-8">
+      Esta página te ayudará a diagnosticar problemas de conexión entre el frontend y la API.
+    </p>
+    
+    <APIConnectionTest client:load />
+    
+    <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Configuración del Entorno</h2>
+      
+      <div class="mb-4">
+        <h3 class="font-bold text-gray-800 mb-2">1. Verifica tu archivo .env</h3>
+        <p class="text-gray-700">
+          Asegúrate de tener un archivo <code class="bg-gray-100 px-1 rounded">.env</code> en la raíz de tu proyecto frontend con la siguiente variable:
+        </p>
+        <pre class="bg-gray-100 p-3 rounded mt-2 text-sm">PUBLIC_API_URL=http://localhost:3000/api</pre>
+        <p class="text-gray-700 mt-2">
+          Ajusta la URL según donde esté alojada tu API.
+        </p>
+      </div>
+      
+      <div class="mb-4">
+        <h3 class="font-bold text-gray-800 mb-2">2. Configuración CORS en el Backend</h3>
+        <p class="text-gray-700">
+          Asegúrate de que tu API tenga configurado CORS correctamente para permitir solicitudes desde tu frontend:
+        </p>
+        <pre class="bg-gray-100 p-3 rounded mt-2 text-sm"></pre>
+      </div>
+      
+      <div>
+        <h3 class="font-bold text-gray-800 mb-2">3. Reinicia ambos servidores</h3>
+        <p class="text-gray-700">
+          Después de hacer cambios, reinicia tanto el servidor de la API como el servidor de desarrollo de Astro.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+

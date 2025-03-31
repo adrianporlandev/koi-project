@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { StreamersAPI } from '../../lib/api';
+import StreamerStats from '../../components/StreamerStats.jsx';
+
+// Obtener el nombre del streamer de la URL
+const { name } = Astro.params;
+
+// Verificar que el streamer existe con manejo de errores
+let streamerExists = false;
+try {
+  const streamerData = await StreamersAPI.getByName(name);
+  streamerExists = streamerData && streamerData.length > 0;
+} catch (error) {
+  console.error(`Error al verificar el streamer ${name}:`, error);
+  // No redirigimos inmediatamente, permitimos que la página se cargue con manejo de errores
+  streamerExists = true; // Asumimos que existe para mostrar la UI con manejo de errores
+}
+---
+
+<Layout title={`${name} - Estadísticas de Twitch`}>
+  <div class="bg-gradient-to-r from-purple-900 to-purple-700 text-white py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold">{name}</h1>
+      <p class="mt-2 text-purple-200">Estadísticas detalladas y análisis</p>
+    </div>
+  </div>
+  
+  <div class="container mx-auto px-4 py-12">
+    {!streamerExists ? (
+      <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Atención:</strong>
+        <span class="block sm:inline"> No se encontró información para el streamer "{name}". Verifica que el nombre sea correcto.</span>
+        <div class="mt-4">
+          <a href="/streamers" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+            Ver todos los streamers
+          </a>
+        </div>
+      </div>
+    ) : (
+      <StreamerStats streamerName={name} client:load />
+    )}
+  </div>
+</Layout>
+

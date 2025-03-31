@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StreamerTable from '../components/StreamerTable.jsx';
+---
+
+<Layout title="KOI Stats - Estadísticas de Streamers">
+  <div class="bg-gradient-to-r from-purple-900 to-purple-700 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">KOI Stats</h1>
+      <p class="text-xl md:text-2xl max-w-3xl mx-auto">
+        Estadísticas detalladas y análisis de los streamers más populares de KOI
+      </p>
+    </div>
+  </div>
+  
+ 
+    
+    <StreamerTable client:load />
+  </div>
+</Layout>
+
